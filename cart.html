@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cart — Nova Shield</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+      .cart-container { max-width:1000px; margin:28px auto; padding:16px; }
+    .cart-list { display:flex; flex-direction:column; gap:12px; }
+    .cart-item { display:flex; gap:12px; background:#fff; border-radius:8px; padding:12px; align-items:center; box-shadow:0 8px 30px rgba(3,12,34,0.04) }
+    .cart-item img { width:92px; height:72px; object-fit:cover; border-radius:6px; }
+    .cart-item .meta { flex:1 }
+    .cart-item .meta h4 { margin:0 0 6px; font-size:16px }
+    .cart-item .meta .price { font-weight:800 }
+    .cart-controls { display:flex; gap:8px; align-items:center; }
+    .qty { width:56px; padding:6px 8px; border-radius:6px; border:1px solid rgba(3,12,34,0.06); text-align:center }
+    .remove { background:transparent; border:0; color:#e11; cursor:pointer; font-weight:700 }
+    .checkout-box { margin-top:18px; padding:14px; background:#fff; border-radius:8px; box-shadow:0 10px 30px rgba(3,12,34,0.04); display:flex; justify-content:space-between; align-items:center }
+    .btn-primary { background:#111; color:#fff; padding:10px 14px; border-radius:8px; border:0; cursor:pointer; font-weight:700 }
+    /* ============================
+   cart.css — styles for cart.html
+   Paste into css/cart.css or merge into css/style.css
+   ============================ */
+
+/* Variables (only add if not already present in your main stylesheet) */
+:root{
+  --container: 1200px;
+  --bg: #fbfbfc;
+  --card-bg: #ffffff;
+  --muted: #6b7280;
+  --dark: #0b2447;
+  --accent-dark: #111111;
+  --radius: 10px;
+  --shadow-sm: 0 8px 30px rgba(3,12,34,0.06);
+  --shadow-lg: 0 18px 50px rgba(3,12,34,0.08);
+  --transition: 180ms cubic-bezier(.2,.9,.3,1);
+}
+
+/* Page background & container */
+body { background: linear-gradient(180deg,#fafbfc,#ffffff 40%); color: var(--dark); font-family: Inter, system-ui, -apple-system, Roboto, Arial, sans-serif; }
+.cart-container { max-width: var(--container); margin: 36px auto; padding: 18px; }
+
+/* Page title */
+.cart-container h1 { margin: 0 0 14px; font-size: 26px; font-weight: 800; color: var(--dark); }
+
+/* Empty cart message */
+#emptyMsg { color: var(--muted); font-size: 15px; margin-top: 12px; }
+
+/* Cart list */
+.cart-list { display: flex; flex-direction: column; gap: 14px; margin-top: 12px; }
+
+/* Each cart item */
+.cart-item {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(3,12,34,0.04);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.cart-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+
+/* Thumbnail */
+.cart-item img {
+  width: 96px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  background: #f7f7f7;
+  border: 1px solid rgba(3,12,34,0.03);
+}
+
+/* Item meta (title + price) */
+.cart-item .meta { flex: 1; min-width: 0; }
+.cart-item .meta h4 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cart-item .meta .price {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--accent-dark);
+}
+
+/* Controls (qty + remove) */
+.cart-controls { display:flex; gap:10px; align-items:center; }
+
+/* Qty input */
+.qty {
+  width: 64px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(3,12,34,0.06);
+  text-align: center;
+  font-weight: 700;
+  font-size: 15px;
+  background: linear-gradient(180deg,#fff,#fbfdff);
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+.qty:focus { outline:none; box-shadow: 0 8px 28px rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.12); }
+
+/* Remove button */
+.remove {
+  background: transparent;
+  border: 0;
+  color: #e11;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 8px;
+  transition: background var(--transition), transform var(--transition);
+}
+.remove:hover { background: rgba(225,17,17,0.06); transform: translateY(-2px); }
+
+/* Checkout box (total + actions) */
+.checkout-box {
+  margin-top: 18px;
+  padding: 16px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(3,12,34,0.04);
+}
+
+/* Total label */
+.checkout-box .total-label { font-weight: 800; font-size: 18px; color: var(--dark); }
+.checkout-box .meta-note { color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+/* Buttons in checkout box */
+.btn-primary, .checkout-box .btn-primary {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  font-weight: 800;
+  background: var(--accent-dark);
+  color: #fff;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,0,0,0.12); }
+
+/* Clear cart button (lighter style) */
+#clearCart {
+  background: transparent;
+  color: var(--dark);
+  border-radius: 8px;
+  padding: 8px 12px;
+  border: 1px solid rgba(3,12,34,0.06);
+  font-weight:700;
+}
+#clearCart:hover { background: rgba(0,0,0,0.04); transform: translateY(-2px); }
+
+/* Responsive layout: stack items on small screens */
+@media (max-width: 820px) {
+  .cart-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .cart-item img { width: 100%; height: auto; max-height:220px; }
+  .cart-controls { align-self: stretch; width:100%; justify-content: space-between; }
+  .checkout-box { flex-direction: column; align-items: stretch; text-align: left; }
+  .checkout-box > div:last-child { display:flex; gap:10px; justify-content:flex-start; margin-top:8px; }
+}
+
+/* Small utilities */
+.text-muted { color: var(--muted); font-size: 13px; }
+.center { text-align:center; }
+
+/* Accessibility: focus outlines */
+:focus { outline: none; }
+:focus-visible { box-shadow: 0 0 0 4px rgba(0,0,0,0.08); border-radius:8px; }
+
+/* Tiny print adjustments */
+@media print {
+  .remove, #clearCart, .btn-primary { display:none; }
+  .cart-container { margin:0; padding:0; }
+}
+  </style>
+</head>
+<body class="nav-1"> <!-- Change to nav-2 or nav-3 to try different navbar styles -->
+
+  <!-- NAVBAR (three styles available: nav-1, nav-2, nav-3) -->
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="index.html">
+      <span class="brand-logo-bg" style="background-image:url('images/logo.png');" aria-hidden="true"></span>
+      <span class="brand-title"></span>
+    </a>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+         <li><a href="term.html">Terms & Conditions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="actions">
+  <a class="cart-icon" href="cart.html">
+    <i class="fa-solid fa-cart-shopping"></i>
+  </a>
+
+  <a class="cart-icon" href="login.html">
+    <i class="fa-regular fa-user"></i>
+  </a>
+</div>
+    <button class="nav-toggle" aria-label="Open menu">☰</button>
+
+  </div>
+</header>
+
+  <main class="cart-container">
+    <h1>Your Cart</h1>
+    <div id="cartList" class="cart-list"></div>
+    <div id="emptyMsg">Your cart is empty. <a href="shop.html">Continue shopping</a></div>
+
+    <div id="checkoutBox" class="checkout-box" style="display:none">
+      <div>
+        <div class="total-label">Total: <span id="cartTotal">$0.00</span></div>
+        <div style="color:#667; font-size:13px">Taxes and shipping calculated at checkout.</div>
+      </div>
+      <div>
+        <button id="clearCart" class="btn btn-muted">Clear Cart</button>
+        <button id="checkoutBtn" class="btn btn-primary">Proceed to Checkout</button>
+      </div>
+    </div>
+  </main>
+
+   
+   <footer class="site-footer">
+
+  <div class="container footer-grid">
+
+    <!-- PART 1: ABOUT -->
+    <div class="footer-col">
+      <img src="images/logo.png" alt="logo" class="footer-logo">
+
+      
+      <p>Reliable cybersecurity for everyone.</p>
+
+      <p style="margin-top:10px; line-height:1.6;">
+        Our team delivers comprehensive evaluations of various antivirus software,
+        highlighting their features, strengths, and weaknesses. These reviews are based on
+        meticulous testing and thorough assessment.
+      </p>
+    </div>
+
+    <!-- PART 2: LINKS -->
+   
+    <!-- PART 3: SOCIAL -->
+    <div class="footer-col">
+       <h5 style="margin-top:20px;">Our Policies</h5>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+        <li><a href="term.html">Terms & Conditions</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="cookies.html">Cookies Policy</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="internet-ads.html">Internet-Based Ads</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+     <div class="footer-col">
+      <div class="footer-col">
+  <h5>Contact Info</h5>
+  <ul>
+    <li>Email: inquiry@novashield.shop</li>
+    <li>Address: USA</li>
+    <li>Phone: +1 844 800 2746</li>
+    
+  </ul>
+</div>
+    </div>
+
+
+  </div>
+
+  <!-- COPYRIGHT (FULL WIDTH + BOTTOM CENTER) -->
+  <div class="footer-copy">
+    <p>© <span id="year"></span> NovaShield. All rights reserved.</p>
+  </div>
+
+</footer>
+ <script>
+    // small script for nav toggle and year
+    document.querySelector('.nav-toggle').addEventListener('click', function(){
+      document.body.classList.toggle('nav-open');
+    });
+    document.getElementById('year').innerText = new Date().getFullYear();
+  </script>
+
+  <script>
+    /* Simple cart helpers: uses localStorage key novashield_cart'
+       Each item: { id, title, price, qty, image? } */
+    function getCart(){ try{ return JSON.parse(localStorage.getItem('novashield_cart')||'[]'); }catch(e){ return []; } }
+    function saveCart(cart){ localStorage.setItem('novashield_cart', JSON.stringify(cart)); renderCart(); }
+
+    function formatMoney(v){ return '$' + Number(v).toFixed(2); }
+
+    function renderCart(){
+      const cart = getCart();
+      const list = document.getElementById('cartList');
+      const emptyMsg = document.getElementById('emptyMsg');
+      const checkoutBox = document.getElementById('checkoutBox');
+      list.innerHTML = '';
+      if(!cart.length){
+        emptyMsg.style.display = 'block';
+        checkoutBox.style.display = 'none';
+        document.getElementById('cartTotal').textContent = '$0.00';
+        return;
+      }
+      emptyMsg.style.display = 'none';
+      checkoutBox.style.display = 'flex';
+
+      cart.forEach(item=>{
+        const row = document.createElement('div');
+        row.className = 'cart-item';
+        // show image only if present
+        const imgHtml = item.image ? `<img src="${item.image}" alt="${escapeHtml(item.title)}">` : '';
+        row.innerHTML = `
+          ${imgHtml}
+          <div class="meta">
+            <h4>${escapeHtml(item.title)}</h4>
+            <div class="price">${formatMoney(item.price)}</div>
+          </div>
+          <div class="cart-controls">
+            <input class="qty" type="number" min="1" value="${item.qty}" data-id="${escapeHtml(item.id)}">
+            <button class="remove" data-id="${escapeHtml(item.id)}">Remove</button>
+          </div>
+        `;
+        list.appendChild(row);
+      });
+
+      attachHandlers();
+      updateTotal();
+    }
+
+    function attachHandlers(){
+      document.querySelectorAll('.qty').forEach(input=>{
+        input.onchange = ()=> {
+          const id = input.getAttribute('data-id');
+          let q = parseInt(input.value) || 1;
+          if(q < 1) q = 1;
+          const cart = getCart();
+          const idx = cart.findIndex(i => String(i.id) === String(id));
+          if(idx > -1){ cart[idx].qty = q; saveCart(cart); }
+        };
+      });
+      document.querySelectorAll('.remove').forEach(btn=>{
+        btn.onclick = ()=> {
+          const id = btn.getAttribute('data-id');
+          let cart = getCart();
+          cart = cart.filter(i => String(i.id) !== String(id));
+          saveCart(cart);
+        };
+      });
+    }
+
+    function updateTotal(){
+      const cart = getCart();
+      const total = cart.reduce((s,i)=> s + (i.price * i.qty), 0);
+      document.getElementById('cartTotal').textContent = formatMoney(total);
+    }
+
+    // Actions
+    document.getElementById('clearCart').addEventListener('click', ()=>{
+      if(!confirm('Clear all items from cart?')) return;
+      localStorage.removeItem('novashield_cart');
+      renderCart();
+    });
+
+    // IMPORTANT: go to checkout page — checkout.html reads same localStorage key
+    document.getElementById('checkoutBtn').addEventListener('click', ()=> {
+      const cart = getCart();
+      if(!cart.length){ alert('Your cart is empty. Add items first.'); return; }
+      // navigate to checkout page
+      window.location.href = 'checkout.html';
+    });
+
+    function escapeHtml(str){ if(!str) return ''; return String(str).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; }); }
+
+    // for demo convenience: if cart empty populate demo item (REMOVE in production)
+    (function seedDemoIfEmpty(){
+      const cart = getCart();
+      if(!cart.length){
+        
+        localStorage.setItem('novashield_cart', JSON.stringify(demo));
+      }
+      renderCart();
+    })();
+  </script>
+   <script>
+   
+
+    // CART: read localStorage and update #cartAmount
+    (function(){
+      function getCart() {
+        try {
+          return JSON.parse(localStorage.getItem('novashield_cart') || '[]');
+        } catch (e) { return []; }
+      }
+      function updateCartAmount() {
+        const cart = getCart();
+        const total = cart.reduce((sum, item) => {
+          const price = Number(item.price) || 0;
+          const qty = Number(item.qty) || 0;
+          return sum + (price * qty);
+        }, 0);
+        const el = document.getElementById('cartAmount');
+        if (el) el.textContent = '$' + total.toFixed(2);
+      }
+
+      // Run on load
+      updateCartAmount();
+
+      // Also listen for storage events (when cart is changed in another tab)
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'novashield_cart') updateCartAmount();
+      });
+
+      // Provide a small helper in case other pages call it directly
+      window.novashield = window.novashield || {};
+      window.novashield.updateCart = updateCartAmount;
+    })();
+  </script>
+
+</body>
+</html>

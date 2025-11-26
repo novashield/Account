@@ -1,0 +1,145 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NovaShield — Faq</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <meta name="description" content="NovaShield — Modern antivirus & cyber-security solutions" />
+</head>
+<body class="nav-1"> <!-- Change to nav-2 or nav-3 to try different navbar styles -->
+
+  <!-- NAVBAR (three styles available: nav-1, nav-2, nav-3) -->
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="index.html">
+      <span class="brand-logo-bg" style="background-image:url('images/logo.png');" aria-hidden="true"></span>
+      <span class="brand-title"></span>
+    </a>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+         <li><a href="term.html">Terms & Conditions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="actions">
+  <a class="cart-icon" href="cart.html">
+    <i class="fa-solid fa-cart-shopping"></i>
+  </a>
+
+  <a class="cart-icon" href="login.html">
+    <i class="fa-regular fa-user"></i>
+  </a>
+</div>
+    <button class="nav-toggle" aria-label="Open menu">☰</button>
+
+  </div>
+</header>
+
+<section class="page-hero">
+    <div class="container">
+      <h1>FAQ</h1>
+      
+    </div>
+  </section>
+
+  <!-- FAQ CONTENT -->
+  <main class="container">
+    <article class="policy-content">
+      <h2>Frequently Asked Questions — Nova Shield</h2>
+
+      <h3>Is Norton a good antivirus program?</h3>
+      <p>Yes. Norton is a reputable antivirus suite and is generally considered worth the investment. It offers comprehensive protection against malware and other online threats, and performs well on Windows, Android, macOS and iOS. Norton’s plans are available across web apps, mobile apps and browser extensions — and some plans support multiple or unlimited personal devices depending on the plan you choose. Always check the exact features and device limits for the specific Norton plan before purchasing.</p>
+
+      <h3>What is the difference between Norton AntiVirus Basic and Norton Internet Security?</h3>
+      <p>The primary difference historically is device coverage and included features. Norton Internet Security (or comparable higher-tier Norton plans) typically includes broader protection features and may allow installation across more devices than the basic plan. The exact feature set varies by product version and release — please review the vendor product pages or contact us for the latest comparison.</p>
+
+      <h3>Is Norton AntiVirus Basic better than Norton Internet Security?</h3>
+      <p>Generally, Norton Internet Security (or the higher-tier Norton plans) offers more features, stronger overall protection, and better performance optimizations than the basic plan. However, Norton AntiVirus Basic may be cheaper and can be sufficient for users with limited needs or fewer devices. Choose the plan that best fits your device count, feature needs (like VPN, password manager, device optimization), and budget.</p>
+
+      <h3>How to claim a Norton subscription refund?</h3>
+      <p>Refund policies depend on the seller and the specific Norton plan purchased. At Nova Shield, you may be eligible for a refund within the timeframe described in our <a href="refund.html">Refund Policy</a>. For many subscriptions, vendors offer a 30-day money-back guarantee — but the refund process can require contacting customer service (typically by phone) and providing order details. If you need help with a refund for a Norton subscription you bought from us, please contact our support team at <a href="#">inquiry@novashield.shop</a> and include your order number and purchase date; we will guide you through the steps.</p>
+
+      <hr>
+
+      <p>If you have other questions not listed here, please visit our <a href="contact.html">Contact</a> page or email us at <a href="#">inquiry@novashield.shop</a>. We’ll be happy to help.</p>
+    </article>
+  </main>
+
+ <footer class="site-footer">
+
+  <div class="container footer-grid">
+
+    <!-- PART 1: ABOUT -->
+    <div class="footer-col">
+      <img src="images/logo.png" alt="logo" class="footer-logo">
+
+      
+      <p>Reliable cybersecurity for everyone.</p>
+
+      <p style="margin-top:10px; line-height:1.6;">
+        Our team delivers comprehensive evaluations of various antivirus software,
+        highlighting their features, strengths, and weaknesses. These reviews are based on
+        meticulous testing and thorough assessment.
+      </p>
+    </div>
+
+    <!-- PART 2: LINKS -->
+   
+    <!-- PART 3: SOCIAL -->
+    <div class="footer-col">
+       <h5 style="margin-top:20px;">Our Policies</h5>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+        <li><a href="term.html">Terms & Conditions</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="cookies.html">Cookies Policy</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="internet-ads.html">Internet-Based Ads</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+     <div class="footer-col">
+      <div class="footer-col">
+  <h5>Contact Info</h5>
+  <ul>
+    <li>Email: inquiry@novashield.shop</li>
+    <li>Address: USA</li>
+    <li>Phone: +1 844 800 2746</li>
+    
+  </ul>
+</div>
+    </div>
+
+
+  </div>
+
+  <!-- COPYRIGHT (FULL WIDTH + BOTTOM CENTER) -->
+  <div class="footer-copy">
+    <p>© <span id="year"></span> NovaShield. All rights reserved.</p>
+  </div>
+
+</footer>
+
+
+
+  <script>
+    // small script for nav toggle and year
+    document.querySelector('.nav-toggle').addEventListener('click', function(){
+      document.body.classList.toggle('nav-open');
+    });
+    document.getElementById('year').innerText = new Date().getFullYear();
+  </script>
+</body>
+</html>

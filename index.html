@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>NovaShield — home</title>
+  <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+ 
+  /* Hero */
+  .hero{
+    position:relative;
+    background-image:url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size:cover;
+    background-position:center;
+    border-radius:0 0 18px 18px;
+    overflow:hidden;
+    color:#fff;
+  }
+  /* make hero-center use the hero background */
+.hero-center{
+  position:relative;
+  background-image:url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size:cover;
+  background-position:center;
+  border-radius:0 0 18px 18px;
+  overflow:hidden;
+  color:#fff;
+}
+
+/* keep the same overlay you had before (optional) */
+.hero-center::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0.5),rgba(0,0,0,0.6));
+}
+
+/* inner content centering */
+.hero-inner{
+  position:relative;
+  max-width:950px;
+  margin:auto;
+  padding:80px 20px 120px;
+  text-align:center;
+  z-index:2;
+}
+.hero-inner h1{ font-size:32px; font-weight:800; color:#fff; margin-bottom:10px }
+.hero-inner p{ color:#f1f5f9; margin-bottom:22px }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,0.5),rgba(0,0,0,0.6));
+  }
+  .hero-content{
+    position:relative;
+    max-width:950px;
+    margin:auto;
+    padding:80px 20px 120px;
+    text-align:center;
+    z-index:2;
+  }
+  .hero-content h1{
+    font-size:32px;
+    font-weight:800;
+    line-height:1.2;
+    margin-bottom:10px;
+  }
+  .hero-content .tag{
+    font-weight:700;
+    color:#ffb347;
+    margin-bottom:14px;
+    display:inline-block;
+  }
+  .hero-content p{
+    font-size:16px;
+    color:#f1f5f9;
+    margin-bottom:22px;
+  }
+  .hero-buttons a{
+    display:inline-block;
+    margin:8px;
+    padding:12px 20px;
+    border-radius:8px;
+    font-weight:700;
+    transition:all .3s ease;
+  }
+  .btn-primary{
+    background:#ff6b6b;
+    color:#fff;
+  }
+  .btn-primary:hover{background:#e05050;}
+  .btn-outline{
+    border:2px solid #fff;
+    color:#fff;
+  }
+  .btn-outline:hover{
+    background:#fff;
+    color:#000;
+  }
+
+  /* Sections */
+  .section{
+    max-width:1100px;
+    margin:60px auto;
+    padding:0 20px;
+  }
+  .section h2{
+    text-align:center;
+    font-size:24px;
+    font-weight:800;
+    margin-bottom:10px;
+  }
+  .section p.desc{
+    text-align:center;
+    color:var(--muted);
+    margin-bottom:28px;
+  }
+
+  /* Product Grid */
+  .product-section{max-width:1100px;margin:40px auto;padding:0 20px}
+  .section-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+  .section-header h2{margin:0}
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+  }
+  .product{
+    background:#fff;
+    border-radius:12px;
+    padding:16px;
+    text-align:center;
+    box-shadow:0 6px 20px rgba(0,0,0,0.04);
+    transition:transform .3s ease;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .product:hover{transform:translateY(-5px)}
+  .product .thumb img{width:100%;height:160px;object-fit:contain;border-radius:8px;background:#fafafa;margin-bottom:10px}
+  .prod-title{font-size:16px;font-weight:700;margin:10px 0;color:var(--accent)}
+  .prod-price{margin-top:6px}
+  .prod-price .new{font-weight:800;color:var(--brand)}
+  .prod-price .old{color:#999;margin-right:6px}
+  .btn-add{
+    margin-top:12px;
+    padding:10px 14px;
+    border:none;
+    background:var(--yellow);
+    color:#111;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:800;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-add:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+  .btn-add:active{transform:translateY(-1px)}
+
+  /* Top bar / nav simple */
+ 
+
+  
+</style>
+</head>
+<body class="nav-1"> <!-- Change to nav-2 or nav-3 to try different navbar styles -->
+
+  <!-- NAVBAR (three styles available: nav-1, nav-2, nav-3) -->
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="index.html">
+      <span class="brand-logo-bg" style="background-image:url('images/logo.png');" aria-hidden="true"></span>
+      <span class="brand-title"></span>
+    </a>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+         <li><a href="term.html">Terms & Conditions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="actions">
+  <a class="cart-icon" href="cart.html">
+    <i class="fa-solid fa-cart-shopping"></i>
+  </a>
+
+  <a class="cart-icon" href="login.html">
+    <i class="fa-regular fa-user"></i>
+  </a>
+</div>
+    <button class="nav-toggle" aria-label="Open menu">☰</button>
+
+  </div>
+</header>
+
+<!-- mobile backdrop (used by script) -->
+<div id="mobileBackdrop" class="mobile-backdrop" aria-hidden="true"></div>
+
+  <!-- 🌅 Hero Section with Background -->
+<section id="home" class="hero-center" aria-label="Hero">
+  <div class="hero-inner">
+    <h1>Powerful Protection for Your Digital World</h1>
+    <p>
+      Shield your devices from viruses, malware, ransomware, phishing attacks and advanced online threats.
+      NovaShield combines real-time threat detection, secure browsing, device monitoring and privacy protection —
+      giving you complete security at home, at work and on the go.
+    </p>
+  </div>
+</section>
+
+
+
+   <!-- FEATURES (kept) -->
+  <section id="features" class="features" aria-label="Key features">
+    <div class="container">
+      <h2>Key Features</h2>
+      <div class="grid-3" role="list">
+        <div class="card" role="listitem">
+          <div class="icon">🛡️</div>
+          <h3>Real-time Protection</h3>
+          <p>Continuously scans & blocks threats before they reach your devices.</p>
+        </div>
+        <div class="card" role="listitem">
+          <div class="icon">⚡</div>
+          <h3>Lightweight & Fast</h3>
+          <p>Low system impact with high detection accuracy.</p>
+        </div>
+        <div class="card" role="listitem">
+          <div class="icon">🔒</div>
+          <h3>Advanced Encryption</h3>
+          <p>Secure data at rest and in transit with strong cryptography.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+<section id="how" class="how" aria-label="How NovaShield works" style="padding:34px 0">
+ <div class="container" style="text-align:center;">
+    <h2>How NovaShield Works — 3 simple steps</h2>
+    <p style="color:var(--muted);max-width:880px;margin:auto;">
+        From installation to active protection: NovaShield secures your endpoints, 
+        keeps you private online and helps recover lost data.
+    </p>
+</div>
+
+
+    <div class="grid-3" style="margin-top:18px;gap:20px">
+      <article class="card" style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:28px">⬇️</div>
+        <h3>1. Install</h3>
+        <p style="color:var(--muted)">Download the appropriate installer for Windows, macOS, Android or iOS. Setup wizard guides you through activation in under 5 minutes.</p>
+        <ul style="color:var(--muted);margin:0;padding-left:18px">
+          <li>One-click installer</li>
+          <li>Auto device discovery for multi-device setup</li>
+        </ul>
+      </article>
+
+      <article class="card" style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:28px">🛡️</div>
+        <h3>2. Protect</h3>
+        <p style="color:var(--muted)">Real-time scanning, cloud-based threat intelligence and behavioral analysis block malware before it can execute.</p>
+        <ul style="color:var(--muted);margin:0;padding-left:18px">
+          <li>Real-time antivirus & anti-ransomware</li>
+          <li>Web protection & phishing prevention</li>
+        </ul>
+      </article>
+
+      <article class="card" style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:28px">🔐</div>
+        <h3>3. Privacy</h3>
+        <p style="color:var(--muted)">Built-in VPN, SafeCam and password manager protect identity and private data on public networks and at home.</p>
+        <ul style="color:var(--muted);margin:0;padding-left:18px">
+          <li>No-log VPN (optional)</li>
+          <li>Password vault with autofill</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- 💻 Product Grid -->
+  <section class="product-section">
+      <div class="section-header">
+        <h2>Norton Security</h2>
+        <a class="view-all" href="norton.html">View All Products</a>
+      </div>
+
+      <div class="product-grid">
+        <!-- p9 -->
+        <article class="product" data-id="p9" data-title="Norton 360 Premium For 10 Devices" data-price="99.99" data-image="images/n1.webp">
+          <a class="product-link" href="product-n1.html" title="Norton 360 Premium">
+            <div class="thumb"><img src="images/n1.webp" alt="Norton 360 Premium"></div>
+          </a>
+          <div>
+            <div class="prod-title">Norton 360 Premium For 10 Devices</div>
+            <div class="prod-price"><span class="new">$99.99</span></div>
+            <button class="btn-add" data-id="p9" data-price="99.99">Add to cart</button>
+          </div>
+        </article>
+
+        <!-- p10 -->
+        <article class="product" data-id="p10" data-title="Norton 360 Standard — 1 Device" data-price="64.99" data-image="images/n2.webp">
+          <a class="product-link" href="product-n2.html" title="Norton 360 Standard">
+            <div class="thumb"><img src="images/n2.webp" alt="Norton Standard"></div>
+          </a>
+          <div>
+            <div class="prod-title">Norton 360 Standard — 1 Device</div>
+            <div class="prod-price"><span class="new">$64.99</span></div>
+            <button class="btn-add" data-id="p10" data-price="64.99">Add to cart</button>
+          </div>
+        </article>
+
+        <!-- p11 -->
+        <article class="product" data-id="p11" data-title="Norton 360 Deluxe — 3 Devices" data-price="79.99" data-image="images/n3.webp">
+          <a class="product-link" href="product-n3.html" title="Norton Deluxe">
+            <div class="thumb"><img src="images/n3.webp" alt="Norton Deluxe"></div>
+          </a>
+          <div>
+            <div class="prod-title">Norton 360 Deluxe — 3 Devices</div>
+            <div class="prod-price"><span class="new">$79.99</span></div>
+            <button class="btn-add" data-id="p11" data-price="79.99">Add to cart</button>
+          </div>
+        </article>
+
+        <!-- p12 -->
+        <article class="product" data-id="p12" data-title="Norton 360 Deluxe - 5 devices" data-price="89.99" data-image="images/n4.webp">
+          <a class="product-link" href="product-n4.html" title="Norton 5 devices">
+            <div class="thumb"><img src="images/n4.webp" alt="Norton 5 devices"></div>
+          </a>
+          <div>
+            <div class="prod-title">Norton 360 Deluxe - 5 devices</div>
+            <div class="prod-price"><span class="new">$89.99</span></div>
+            <button class="btn-add" data-id="p12" data-price="89.99">Add to cart</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+     <section class="product-section">
+      <div class="section-header">
+        <h2>TREND MICRO</h2>
+        <a class="view-all" href="#">View All Products</a>
+      </div>
+
+      <div class="product-grid">
+        <!-- p5 -->
+        <article class="product" data-id="p5" data-title="Trend Micro Internet Security 3 Devices 1 Year" data-price="49.99" data-image="images/t1.webp">
+          <a class="product-link" href="product-t1.html" title="Trend Micro Internet">
+            <div class="thumb"><img src="images/t1.webp" alt="Trend Micro Internet"></div>
+          </a>
+          <div>
+            <div class="prod-title">Trend Micro Internet Security 3 Devices 1 Year</div>
+            <div class="prod-price"><span class="old">$59.99</span> <span class="new">$49.99</span></div>
+            <button class="btn-add" data-id="p5" data-price="49.99">Add to cart</button>
+          </div>
+        </article>
+
+        <!-- p6 -->
+        <article class="product" data-id="p6" data-title="Trend Micro Internet Security 3 User, 1 Year" data-price="89.99" data-image="images/t2.webp">
+          <a class="product-link" href="product-t2.html" title="Trend Micro Internet">
+            <div class="thumb"><img src="images/t2.webp" alt="Trend Micro Internet"></div>
+          </a>
+          <div>
+            <div class="prod-title">Trend Micro Internet Security 3 User, 1 Year</div>
+            <div class="prod-price"><span class="old">$99.99</span> <span class="new">$89.99</span></div>
+            <button class="btn-add" data-id="p6" data-price="89.99">Add to cart</button>
+          </div>
+        </article>
+
+        <!-- p7 -->
+        <article class="product" data-id="p7" data-title="Trend Micro Maximum Security 3 Devices 1 Year" data-price="99.99" data-image="images/t3.webp">
+          <a class="product-link" href="product-t3.html" title="Trend Micro Maximum">
+            <div class="thumb"><img src="images/t3.webp" alt="Trend Micro Maximum"></div>
+          </a>
+          <div>
+            <div class="prod-title">Trend Micro Maximum Security 3 Devices 1 Year</div>
+            <div class="prod-price"><span class="old">$119.99</span> <span class="new">$99.99</span></div>
+            <button class="btn-add" data-id="p7" data-price="99.99">Add to cart</button>
+          </div>
+        </article>
+
+        <!-- p8 -->
+        <article class="product" data-id="p8" data-title="Trend Micro Internet Security" data-price="89.99" data-image="images/t4.webp">
+          <a class="product-link" href="product-t4.html" title="Trend Micro Internet Security">
+            <div class="thumb"><img src="images/t4.webp" alt="Trend Micro Internet Security"></div>
+          </a>
+          <div>
+            <div class="prod-title">Trend Micro Internet Security</div>
+            <div class="prod-price"><span class="old">$109.99</span> <span class="new">$89.99</span></div>
+            <button class="btn-add" data-id="p8" data-price="89.99">Add to cart</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="trusted" class="trusted" aria-label="Trusted by millions">
+  <div class="container">
+    <h2 class="center-title">Trusted by millions of customers</h2>
+    <p class="center-sub" style="max-width:820px;margin:auto;color:var(--muted)">
+      Norton & NovaShield technology collectively block thousands of threats every minute — 
+      keeping families and businesses protected worldwide.
+    </p>
+
+    <div class="trusted-grid">
+
+      <!-- Box 1 -->
+      <div class="trusted-card">
+        <img src="images/11.svg" 
+        alt="Threat Protection" class="trusted-img">
+
+        <h3>Powerful Protection</h3>
+        <p>Norton technology blocks thousands of malware & ransomware threats every single minute — 
+           keeping your devices safe 24/7.</p>
+      </div>
+
+      <!-- Box 2 -->
+      <div class="trusted-card">
+        <img src="images/12.svg" 
+        alt="Experience" class="trusted-img">
+
+        <h3>Decades of Experience</h3>
+        <p>Count on decades of proven security research, innovation and world-class threat detection systems.</p>
+      </div>
+
+      <!-- Box 3 -->
+      <div class="trusted-card">
+        <img src="images/13.svg" 
+        alt="Family Protection" class="trusted-img">
+
+        <h3>Protection for All</h3>
+        <p>Secure your entire family’s devices, identity and privacy — all from one easy-to-use dashboard.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <footer class="site-footer">
+
+  <div class="container footer-grid">
+
+    <!-- PART 1: ABOUT -->
+    <div class="footer-col">
+      <img src="images/logo.png" alt="logo" class="footer-logo">
+
+      
+      <p>Reliable cybersecurity for everyone.</p>
+
+      <p style="margin-top:10px; line-height:1.6;">
+        Our team delivers comprehensive evaluations of various antivirus software,
+        highlighting their features, strengths, and weaknesses. These reviews are based on
+        meticulous testing and thorough assessment.
+      </p>
+    </div>
+
+    <!-- PART 2: LINKS -->
+   
+    <!-- PART 3: SOCIAL -->
+    <div class="footer-col">
+       <h5 style="margin-top:20px;">Our Policies</h5>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+        <li><a href="term.html">Terms & Conditions</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="cookies.html">Cookies Policy</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="internet-ads.html">Internet-Based Ads</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+     <div class="footer-col">
+      <div class="footer-col">
+  <h5>Contact Info</h5>
+  <ul>
+    <li>Email: inquiry@novashield.shop</li>
+    <li>Address: USA</li>
+    <li>Phone: +1 844 800 2746</li>
+    
+  </ul>
+</div>
+    </div>
+
+
+  </div>
+
+  <!-- COPYRIGHT (FULL WIDTH + BOTTOM CENTER) -->
+  <div class="footer-copy">
+    <p>© <span id="year"></span> NovaShield. All rights reserved.</p>
+  </div>
+
+</footer>
+
+
+
+  <script>
+    // small script for nav toggle and year
+    document.querySelector('.nav-toggle').addEventListener('click', function(){
+      document.body.classList.toggle('nav-open');
+    });
+    document.getElementById('year').innerText = new Date().getFullYear();
+  </script>
+
+ <script>
+ 
+    // --- Add to cart behavior: add item to localStorage and redirect to cart.html ---
+    function getCart() {
+      try { return JSON.parse(localStorage.getItem('_cart') || '[]'); } catch(e){ return []; }
+    }
+    function saveCart(cart) {
+      localStorage.setItem('novashield_cart', JSON.stringify(cart));
+      updateCartAmount();
+    }
+    function updateCartAmount() {
+      const cart = getCart();
+      const total = cart.reduce((s,i) => s + (i.price * i.qty), 0);
+      const el = document.getElementById('cartAmount');
+      if(el) el.textContent = '$' + total.toFixed(2);
+    }
+
+    // initialize cart amount on page load
+    updateCartAmount();
+
+    // helper to find product metadata from article dataset
+    function getProductDataFromArticle(el) {
+      // el is the .product article element
+      return {
+        id: el.getAttribute('data-id'),
+        title: el.getAttribute('data-title') || (el.querySelector('.prod-title') && el.querySelector('.prod-title').textContent.trim()),
+        price: parseFloat(el.getAttribute('data-price') || el.querySelector('.prod-price .new')?.textContent.replace(/[^0-9.-]+/g,'') || '0'),
+        image: el.getAttribute('data-image') || (el.querySelector('.thumb img') && el.querySelector('.thumb img').getAttribute('src')) || ''
+      };
+    }
+
+    // When Add to cart clicked: add and redirect to cart page
+    document.querySelectorAll('.btn-add').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = btn.getAttribute('data-id');
+        // try to find nearest article
+        const article = btn.closest('.product');
+        const pdata = getProductDataFromArticle(article);
+        if(!pdata.id) pdata.id = id || ('p_' + Date.now());
+        // add to cart: if existing, increment qty
+        const cart = getCart();
+        const idx = cart.findIndex(i => i.id === pdata.id);
+        if(idx > -1) {
+          cart[idx].qty += 1;
+        } else {
+          cart.push({ id: pdata.id, title: pdata.title, price: Number(pdata.price), image: pdata.image, qty: 1 });
+        }
+        saveCart(cart);
+        // redirect to cart page
+        window.location.href = 'cart.html';
+      });
+    });
+
+    // Allow clicking thumb/title already goes to product.html by anchor wrapping above
+    // But make whole article clickable on Enter as accessibility enhancement
+    document.querySelectorAll('.product').forEach(prod => {
+      prod.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter') {
+          const link = prod.querySelector('a.product-link');
+          if(link) link.click();
+        }
+      });
+      // set tabindex for keyboard focus
+      prod.setAttribute('tabindex','0');
+    });
+  </script>
+
+</body>
+</html>

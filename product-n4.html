@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Norton 360 Deluxe 2024 — 5 Devices — NovaShield</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    
+    :root{
+  --bg: #f5f7fb;
+  --card-bg: #ffffff;
+  --text: #111111;
+  --muted: #6b7280;
+  --accent: #0b74de; /* price tint */
+  --danger: #e53935;  /* Add to Cart red */
+  --radius: 10px;
+  --container-max: 1200px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Segoe UI Emoji", sans-serif;
+}
+
+
+
+
+
+
+
+/* --- Product card --- */
+.product-section { max-width:1000px; margin:22px auto; padding:0; }
+.product-card { background:var(--card-bg); border-radius:14px; box-shadow:0 10px 30px rgba(3,12,34,0.06); overflow:hidden; }
+
+/* Product header layout */
+.product-header { display:grid; grid-template-columns:420px 1fr; gap:24px; align-items:start; padding:22px; }
+.image-wrap { position:relative; border-radius:var(--radius); overflow:hidden; background:#fff; padding:12px; }
+.image-wrap img { display:block; width:100%; height:auto; border-radius:8px; box-shadow:0 6px 20px rgba(0,0,0,0.06); }
+
+/* Product info */
+.product-info { padding-right:6px; }
+.product-info h1 { font-size:26px; font-weight:800; margin:0 0 8px; line-height:1.15; color:var(--text); } /* product name black */
+.price-block { font-size:18px; margin-top:6px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.price-block .current { color:var(--accent); font-weight:900; font-size:20px; }
+
+/* description & meta */
+.product-desc { margin-top:12px; color:var(--muted); }
+.meta-row { display:flex; gap:12px; align-items:center; margin-top:14px; flex-wrap:wrap; }
+.qty-input { width:70px; padding:8px; border-radius:8px; border:1px solid #d1d5db; background:#fff; font-size:14px; }
+
+/* Add to Cart button now red (as requested earlier) */
+.btn-yellow {
+  padding:10px 16px;
+  background: linear-gradient(180deg, #ff6b6b, #e53935);
+  color:#fff;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:800;
+  box-shadow: 0 8px 20px rgba(229,57,53,0.18);
+  transition: transform .14s ease, box-shadow .14s ease, opacity .12s ease;
+}
+.btn-yellow:active { transform: translateY(1px); }
+.btn-yellow[disabled] { opacity:0.7; cursor:not-allowed; }
+
+/* content section */
+.content-section { padding:20px 22px 28px 22px; border-top: none; background:var(--card-bg); }
+.content-section h2 { font-size:20px; color:var(--accent); margin-top:18px; margin-bottom:8px; }
+.content-section p, .content-section ul { color:#333; margin:0 0 12px 0; }
+.content-section ul { padding-left:20px; }
+
+/* SPEC table */
+table.specs { width:100%; border-collapse:collapse; margin:12px 0; }
+table.specs th, table.specs td { text-align:left; padding:10px; border:1px solid #e9e9e9; font-size:14px; vertical-align:top; }
+table.specs th { background:#fafafa; width:40%; font-weight:700; }
+
+/* make Back / View links black and remove underline */
+.back-link, .view-all, .product-card a { color:var(--text); text-decoration:none; font-weight:600; }
+.back-link:hover, .view-all:hover { text-decoration:underline; }
+
+/* remove unexpected lines under product or images:
+   this targets common sources of lines: hr, img border, link underline, or pseudo-elements */
+.product-card hr, .image-wrap img[style*="border-bottom"], .product-card a { border-bottom:none; text-decoration:none; }
+img { border:0; }
+
+
+
+/* small responsive rules */
+@media (max-width: 880px) {
+  .product-header { display:block; padding:14px; }
+  .image-wrap { margin-bottom:14px; padding:8px; }
+  .product-info h1 { font-size:20px; margin-bottom:10px; }
+  .qty-input { width:80px; }
+}
+
+@media (max-width: 420px) {
+  .meta-row { flex-direction:column; align-items:stretch; gap:10px; }
+  .qty-input { width:100%; max-width:160px; }
+  .btn-yellow { width:100%; display:block; }
+  .main-nav ul { display:none; } /* hide desktop nav on tiny screens so mobile UX relies on toggle */
+}
+
+  </style>
+</head>
+<body class="nav-1"> <!-- Change to nav-2 or nav-3 to try different navbar styles -->
+
+  <!-- NAVBAR (three styles available: nav-1, nav-2, nav-3) -->
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="index.html">
+      <span class="brand-logo-bg" style="background-image:url('images/logo.png');" aria-hidden="true"></span>
+      <span class="brand-title"></span>
+    </a>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+         <li><a href="term.html">Terms & Conditions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="actions">
+  <a class="cart-icon" href="cart.html">
+    <i class="fa-solid fa-cart-shopping"></i>
+  </a>
+
+  <a class="cart-icon" href="login.html">
+    <i class="fa-regular fa-user"></i>
+  </a>
+</div>
+    <button class="nav-toggle" aria-label="Open menu">☰</button>
+
+  </div>
+</header>
+
+  <main class="container">
+    <a class="back-link" href="shop.html">← Back to products</a>
+
+    <section class="product-section">
+      <article class="product-card" aria-labelledby="productTitle">
+        <div class="product-header">
+          <div class="image-column">
+            <div class="main-image-wrap image-wrap">
+              <!-- image file: images/t4.webp -->
+              <img id="productImage" src="images/n4.webp" alt="Norton 360 Deluxe 2024 - 5 Devices" />
+            </div>
+          </div>
+
+          <div class="product-info">
+            <h1 id="productTitle">Norton 360 Deluxe 2024, Antivirus software for 5 Devices</h1>
+
+            <div class="price-row price-block">
+              <div class="current">$89.99</div>
+            </div>
+
+            <p class="product-desc">
+              Comprehensive antivirus protection for up to 5 devices — antivirus, VPN, dark web monitoring, cloud backup and more.
+            </p>
+
+            <div class="meta-row">
+              <label for="qty">Quantity:</label>
+              <input id="qty" class="qty-input" type="number" min="1" value="1" />
+              <button id="addBtn" class="btn-yellow" aria-label="Add Norton 360 Deluxe (5 devices) to cart">Add to Cart</button>
+            </div>
+
+            <div style="margin-top:12px; color:var(--muted);">
+              <strong>Product Details</strong>
+              <div class="muted">
+                Brand: Norton<br>
+                Media Type: Download – Instructions will be emailed to you<br>
+                Platform: Mac OS Sierra 10.12, Windows 8.1, Mac OS X El Capitan 10.11, Windows 10, Windows 7
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-section" aria-labelledby="detailsHeading">
+          <h2 id="detailsHeading">Buy With Confidence</h2>
+          <ul>
+            <li>30-Day Money Back Guarantee</li>
+            <li>One Of The Best Antivirus</li>
+          </ul>
+
+          <h2>Norton 360 Deluxe 2024 — Antivirus Software for 5 Devices</h2>
+          <p>
+            Norton 360 Deluxe 2024 provides comprehensive antivirus protection for up to 5 devices, including Windows, Mac, Android, and iOS. It includes advanced security features like real-time protection, a secure VPN, Dark Web monitoring, password manager, SafeCam and 50 GB cloud backup.
+          </p>
+
+          <h3>Key Features & Benefits</h3>
+          <ul>
+            <li><strong>Real-Time Threat Protection:</strong> Defends against malware, ransomware, spyware and viruses with continuous updates.</li>
+            <li><strong>Secure VPN:</strong> No-log VPN to protect privacy on public Wi-Fi and encrypt online traffic.</li>
+            <li><strong>Dark Web Monitoring:</strong> Alerts if your personal data appears on risky dark-web sources.</li>
+            <li><strong>50 GB Cloud Backup:</strong> Securely back up important files and recover them if needed.</li>
+            <li><strong>Password Manager:</strong> Store and autofill strong passwords, credit card details and notes safely.</li>
+            <li><strong>Parental Controls & SafeCam:</strong> Manage children’s access and block unauthorized webcam access.</li>
+            <li><strong>Smart Firewall & Device Optimization:</strong> Block unauthorized traffic and keep devices running smoothly.</li>
+            <li><strong>Automatic Updates:</strong> Keeps protection current with minimal user action required.</li>
+          </ul>
+
+          <h3>Key Specs</h3>
+          <table class="specs" aria-label="Product specifications">
+            <tr><th>Number of Devices</th><td>5</td></tr>
+            <tr><th>Number of Licenses</th><td>1</td></tr>
+            <tr><th>Operating System Compatibility</th><td>Windows, Mac OS, Android, iOS</td></tr>
+            <tr><th>Software Format</th><td>Digital Download</td></tr>
+            <tr><th>Subscription Period</th><td>1 Year</td></tr>
+            <tr><th>Product Name</th><td>Norton 360 Deluxe 2024 Antivirus Software (5 Devices) + VPN + Dark Web Monitoring (1 Year Subscription)</td></tr>
+            <tr><th>Brand / Publisher</th><td>Norton / NortonLifeLock</td></tr>
+            <tr><th>Model Number</th><td>SYC940800F050</td></tr>
+            <tr><th>Protection Types</th><td>Antivirus, Anti-Spyware, Anti-Malware, Phishing Protection, Ransomware Protection</td></tr>
+            <tr><th>Cloud Backup</th><td>50 GB</td></tr>
+            <tr><th>SafeCam</th><td>Yes</td></tr>
+            <tr><th>System Requirements</th><td>Internet connection required; high speed recommended</td></tr>
+          </table>
+
+          <h3>Why Choose Norton 360 Deluxe 2024?</h3>
+          <p>
+            Norton 360 Deluxe 2024 is an all-in-one security suite for families and power users who need multi-device protection. It combines award-winning antivirus, privacy tools, backup and identity protection features to give peace of mind for daily online activities.
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+ 
+ <footer class="site-footer">
+
+  <div class="container footer-grid">
+
+    <!-- PART 1: ABOUT -->
+    <div class="footer-col">
+      <img src="images/logo.png" alt="logo" class="footer-logo">
+
+      
+      <p>Reliable cybersecurity for everyone.</p>
+
+      <p style="margin-top:10px; line-height:1.6;">
+        Our team delivers comprehensive evaluations of various antivirus software,
+        highlighting their features, strengths, and weaknesses. These reviews are based on
+        meticulous testing and thorough assessment.
+      </p>
+    </div>
+
+    <!-- PART 2: LINKS -->
+   
+    <!-- PART 3: SOCIAL -->
+    <div class="footer-col">
+       <h5 style="margin-top:20px;">Our Policies</h5>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+        <li><a href="term.html">Terms & Conditions</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="cookies.html">Cookies Policy</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="internet-ads.html">Internet-Based Ads</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+     <div class="footer-col">
+      <div class="footer-col">
+  <h5>Contact Info</h5>
+  <ul>
+    <li>Email: inquiry@novashield.shop</li>
+    <li>Address: USA</li>
+    <li>Phone: +1 844 800 2746</li>
+    
+  </ul>
+</div>
+    </div>
+
+
+  </div>
+
+  <!-- COPYRIGHT (FULL WIDTH + BOTTOM CENTER) -->
+  <div class="footer-copy">
+    <p>© <span id="year"></span> NovaShield. All rights reserved.</p>
+  </div>
+
+</footer>
+
+<script>
+  document.getElementById("year").innerText = new Date().getFullYear();
+  document.querySelector('.nav-toggle').addEventListener('click', function(){
+    document.body.classList.toggle('nav-open');
+  });
+</script>
+  <script>
+    const STORAGE_KEY = 'novashield_cart';
+
+    function readCart() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch (e) { return []; }
+    }
+
+    function writeCart(cart) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+      updateCartAmount();
+    }
+
+    function updateCartAmount() {
+      const cart = readCart();
+      const total = cart.reduce((s,i) => s + (Number(i.price) * Number(i.qty)), 0);
+      const count = cart.reduce((s,i) => s + Number(i.qty), 0);
+      const el = document.getElementById('cartAmount');
+      if (el) el.textContent = `$${total.toFixed(2)} (${count})`;
+    }
+
+    function addProductToCart(item, qty = 1) {
+      const cart = readCart();
+      const idx = cart.findIndex(x => x.id === item.id);
+      if (idx > -1) {
+        cart[idx].qty = Number(cart[idx].qty) + Number(qty);
+      } else {
+        cart.push({ id: item.id, title: item.title, price: Number(item.price), image: item.image || '', qty: Number(qty) });
+      }
+      writeCart(cart);
+    }
+
+    document.getElementById('addBtn').addEventListener('click', function (ev) {
+      ev.preventDefault();
+      const qtyIn = document.getElementById('qty');
+      const qty = qtyIn ? Math.max(1, Number(qtyIn.value) || 1) : 1;
+
+      const titleEl = document.getElementById('productTitle');
+      const imgEl = document.getElementById('productImage');
+      const productTitleText = titleEl ? titleEl.textContent.trim() : 'Norton 360 Deluxe 2024 (5 Devices)';
+      const productImageSrc = imgEl ? imgEl.getAttribute('src') : 'images/n4.webp';
+
+      const product = {
+        id: productTitleText,
+        title: productTitleText,
+        price: 89.99,
+        image: productImageSrc
+      };
+
+      addProductToCart(product, qty);
+
+      this.textContent = 'Added ✓';
+      this.disabled = true;
+
+      window.location.href = 'cart.html';
+    });
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateCartAmount);
+    } else {
+      updateCartAmount();
+    }
+
+   
+  </script>
+</body>
+</html>

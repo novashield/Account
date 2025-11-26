@@ -1,0 +1,387 @@
+<!-- privacy.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NovaShield — Norton</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <meta name="description" content="NovaShield — Modern antivirus & cyber-security solutions" />
+  <style>
+   
+    /* HERO - make image fill the hero area without black bars */
+    .hero{
+      position:relative;
+      border-radius:0 0 18px 18px;
+      overflow:hidden; /* hide any overflow so image always appears as one clean block */
+      background:transparent; /* no black fallback so you don't see black bars */
+      min-height:260px; /* desktop default height */
+      display:block;
+    }
+
+    /* Use an <img> that fills the container using object-fit:cover so
+       the image always covers the area without letterboxing. */
+    .hero-img{
+      display:block;
+      width:100%;
+      height:100%;
+      min-height:260px;
+      object-fit:cover;     /* cover the hero area, cropping sides if necessary */
+      object-position:center center; /* center the crop */
+      border-radius:0 0 18px 18px;
+    }
+
+    /* If you prefer no cropping on very tall images, fallback: use height:auto instead.
+       But object-fit:cover is usually best for full-width banners. */
+
+    /* Hide the text overlay as requested (unchanged) */
+    .hero-content{
+      display:none;
+      position:relative;
+      max-width:950px;
+      margin:auto;
+      padding:80px 20px 120px;
+      text-align:center;
+      z-index:2;
+    }
+
+    /* Sections */
+    .section{
+      max-width:var(--container-width);
+      margin:60px auto;
+      padding:0 20px;
+    }
+    .section h2{
+      text-align:center;
+      font-size:24px;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+    .section p.desc{
+      text-align:center;
+      color:var(--muted);
+      margin-bottom:28px;
+    }
+    .features{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:18px;
+  }
+  .feature{
+    background:#fff;
+    border-radius:14px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.05);
+    flex:1 1 300px;
+    padding:20px;
+    text-align:center;
+    transition:transform .3s ease;
+  }
+  .feature:hover{transform:translateY(-6px)}
+  .feature img{width:60px;height:60px;margin-bottom:12px}
+  .feature h3{margin-bottom:8px}
+  .feature p{color:var(--muted);font-size:14px}
+
+    /* Product Grid */
+    .product-section{max-width:var(--container-width);margin:40px auto;padding:0 20px}
+    .section-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+    .section-header h2{margin:0}
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
+    .product{
+      background:#fff;
+      border-radius:12px;
+      padding:16px;
+      text-align:center;
+      box-shadow:0 6px 20px rgba(0,0,0,0.04);
+      transition:transform .3s ease;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .product:hover{transform:translateY(-5px)}
+    .product .thumb img{width:100%;height:160px;object-fit:contain;border-radius:8px;background:#fafafa;margin-bottom:10px}
+    .prod-title{font-size:16px;font-weight:700;margin:10px 0;color:var(--accent)}
+    .prod-price{margin-top:6px}
+    .prod-price .new{font-weight:800;color:var(--brand)}
+    .prod-price .old{color:#999;margin-right:6px}
+    .btn-add{
+      margin-top:12px;
+      padding:10px 14px;
+      border:none;
+      background:var(--yellow);
+      color:#111;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:800;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .btn-add:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+    .btn-add:active{transform:translateY(-1px)}
+
+    /* mobile backdrop for nav */
+    .mobile-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:none;z-index:40}
+    .mobile-backdrop.show{display:block}
+
+    @media(max-width:900px){
+      .main-nav ul{display:none}
+      .main-nav.mobile-open ul{display:flex;position:fixed;inset:auto 0 0 0;background:#fff;flex-direction:column;padding:16px;z-index:60;box-shadow:0 -6px 30px rgba(0,0,0,0.08)}
+      .nav-toggle{display:block}
+      .hero{min-height:180px}
+      .hero-img{min-height:180px}
+    }
+
+    @media(min-width:1400px){
+      .hero{min-height:360px}
+      .hero-img{min-height:360px}
+    }
+
+  </style>
+</head>
+<body class="nav-1">
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="index.html">
+      <span class="brand-logo-bg" style="background-image:url('images/logo.png');" aria-hidden="true"></span>
+      <span class="brand-title"></span>
+    </a>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="term.html">Terms & Conditions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="actions">
+      <a class="cart-icon" href="cart.html" title="Cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </a>
+
+      <a class="cart-icon" href="login.html" title="Account">
+        <i class="fa-regular fa-user"></i>
+      </a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Open menu">☰</button>
+
+  </div>
+</header>
+
+<!-- HERO: use an img that covers area without letterboxing -->
+<section class="hero" role="img" aria-label="Promotional banner">
+  <!-- Replace images/norton.png with a properly sized banner (ideally wide, e.g. 1920x600) -->
+  <img class="hero-img" src="images/norton.png" alt="LifeLock / Norton promotional banner">
+  <div class="hero-content" aria-hidden="true">
+    <h1>Multi-Device Subscriptions Now In Store – LifeLock PC Protection in USA</h1>
+    <div class="tag">Save Up to 60% on Your Subscription Today!</div>
+    <p>Get Premium Security, SecureLine VPN, System Utility, and Ultimate Multi-Device Subscriptions with Automatic & Manual renewal options.</p>
+  </div>
+</section>
+
+<section class="section">
+    <h2>Multi-Device Subscriptions — LifeLock PC Protection in USA</h2>
+    <p class="desc">The My AV store offers top-rated premium subscriptions for your Phone, PC, Mac, and Tablets. Our single plans cover all devices with LifeLock, Norton & Trend Micro products.</p>
+
+    <div class="features">
+      <div class="feature">
+        <img src="images/service-icon3.webp" alt="PC">
+        <h3>For PC</h3>
+        <p>Protect your system with LifeLock Identity Theft Protection and Norton 360 Security Suite.</p>
+      </div>
+
+      <div class="feature">
+        <img src="images/service-icon2.webp" alt="Phones">
+        <h3>Phones</h3>
+        <p>Secure smartphones with LifeLock and Norton 360 mobile protection anytime, anywhere.</p>
+      </div>
+
+      <div class="feature">
+        <img src="images/service-icon6.webp" alt="Gaming Consoles">
+        <h3>Gaming Consoles</h3>
+        <p>Enjoy safe gaming with Norton 360 with LifeLock Ultimate Plus (VPN & Privacy Tools).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💻 Product Grid -->
+  <section class="product-section">
+      <div class="section-header">
+        <h2>Norton Security</h2>
+        <a class="view-all" href="#">View All Products</a>
+      </div>
+
+      <div class="product-grid">
+        <!-- p9 -->
+        <article class="product" data-id="p9" data-title="Norton 360 Premium For 10 Devices" data-price="99.99" data-image="images/n1.webp">
+          <a class="product-link" href="product-n1.html" title="Norton 360 Premium">
+            <div class="thumb"><img src="images/n1.webp" alt="Norton 360 Premium"></div>
+          </a>
+          <div>
+            <div class="prod-title">Norton 360 Premium For 10 Devices</div>
+            <div class="prod-price"><span class="new">$99.99</span></div>
+            <button class="btn-add" data-id="p9" data-price="99.99">Add to cart</button>
+          </div>
+        </article>
+
+        <!-- p10 -->
+        <article class="product" data-id="p10" data-title="Norton 360 Standard — 1 Device" data-price="64.99" data-image="images/n2.webp">
+          <a class="product-link" href="product-n2.html" title="Norton 360 Standard">
+            <div class="thumb"><img src="images/n2.webp" alt="Norton Standard"></div>
+          </a>
+          <div>
+            <div class="prod-title">Norton 360 Standard — 1 Device</div>
+            <div class="prod-price"><span class="new">$64.99</span></div>
+            <button class="btn-add" data-id="p10" data-price="64.99">Add to cart</button>
+          </div>
+        </article>
+
+        <!-- p11 -->
+        <article class="product" data-id="p11" data-title="Norton 360 Deluxe — 3 Devices" data-price="79.99" data-image="images/n3.webp">
+          <a class="product-link" href="product-n3.html" title="Norton Deluxe">
+            <div class="thumb"><img src="images/n3.webp" alt="Norton Deluxe"></div>
+          </a>
+          <div>
+            <div class="prod-title">Norton 360 Deluxe — 3 Devices</div>
+            <div class="prod-price"><span class="new">$79.99</span></div>
+            <button class="btn-add" data-id="p11" data-price="79.99">Add to cart</button>
+          </div>
+        </article>
+
+        <!-- p12 -->
+        <article class="product" data-id="p12" data-title="Norton 360 Deluxe - 5 devices" data-price="89.99" data-image="images/n4.webp">
+          <a class="product-link" href="product-n4.html" title="Norton 5 devices">
+            <div class="thumb"><img src="images/n4.webp" alt="Norton 5 devices"></div>
+          </a>
+          <div>
+            <div class="prod-title">Norton 360 Deluxe - 5 devices</div>
+            <div class="prod-price"><span class="new">$89.99</span></div>
+            <button class="btn-add" data-id="p12" data-price="89.99">Add to cart</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+     <section class="product-section">
+      <div class="section-header">
+        <h2>TREND MICRO</h2>
+        <a class="view-all" href="#">View All Products</a>
+      </div>
+
+      <div class="product-grid">
+        <!-- p5 -->
+        <article class="product" data-id="p5" data-title="Trend Micro Internet Security 3 Devices 1 Year" data-price="49.99" data-image="images/t1.webp">
+          <a class="product-link" href="product-t1.html" title="Trend Micro Internet">
+            <div class="thumb"><img src="images/t1.webp" alt="Trend Micro Internet"></div>
+          </a>
+          <div>
+            <div class="prod-title">Trend Micro Internet Security 3 Devices 1 Year</div>
+            <div class="prod-price"><span class="old">$59.99</span> <span class="new">$49.99</span></div>
+            <button class="btn-add" data-id="p5" data-price="49.99">Add to cart</button>
+          </div>
+        </article>
+
+        <!-- p6 -->
+        <article class="product" data-id="p6" data-title="Trend Micro Internet Security 3 User, 1 Year" data-price="89.99" data-image="images/t2.webp">
+          <a class="product-link" href="product-t2.html" title="Trend Micro Internet">
+            <div class="thumb"><img src="images/t2.webp" alt="Trend Micro Internet"></div>
+          </a>
+          <div>
+            <div class="prod-title">Trend Micro Internet Security 3 User, 1 Year</div>
+            <div class="prod-price"><span class="old">$99.99</span> <span class="new">$89.99</span></div>
+            <button class="btn-add" data-id="p6" data-price="89.99">Add to cart</button>
+          </div>
+        </article>
+
+        <!-- p7 -->
+        <article class="product" data-id="p7" data-title="Trend Micro Maximum Security 3 Devices 1 Year" data-price="99.99" data-image="images/t3.webp">
+          <a class="product-link" href="product-t3.html" title="Trend Micro Maximum">
+            <div class="thumb"><img src="images/t3.webp" alt="Trend Micro Maximum"></div>
+          </a>
+          <div>
+            <div class="prod-title">Trend Micro Maximum Security 3 Devices 1 Year</div>
+            <div class="prod-price"><span class="old">$119.99</span> <span class="new">$99.99</span></div>
+            <button class="btn-add" data-id="p7" data-price="99.99">Add to cart</button>
+          </div>
+        </article>
+
+        <!-- p8 -->
+        <article class="product" data-id="p8" data-title="Trend Micro Internet Security" data-price="89.99" data-image="images/t4.webp">
+          <a class="product-link" href="product-t4.html" title="Trend Micro Internet Security">
+            <div class="thumb"><img src="images/t4.webp" alt="Trend Micro Internet Security"></div>
+          </a>
+          <div>
+            <div class="prod-title">Trend Micro Internet Security</div>
+            <div class="prod-price"><span class="old">$109.99</span> <span class="new">$89.99</span></div>
+            <button class="btn-add" data-id="p8" data-price="89.99">Add to cart</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+<!-- you can repeat other sections similarly -->
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <img src="images/logo.png" alt="logo" class="footer-logo">
+      <p>Reliable cybersecurity for everyone.</p>
+      <p style="margin-top:10px; line-height:1.6;">
+        Our team delivers comprehensive evaluations of various antivirus software,
+        highlighting their features, strengths, and weaknesses. These reviews are based on
+        meticulous testing and thorough assessment.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h5 style="margin-top:20px;">Our Policies</h5>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+        <li><a href="term.html">Terms & Conditions</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="cookies.html">Cookies Policy</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="internet-ads.html">Internet-Based Ads</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Contact Info</h5>
+      <ul>
+        <li>Email: inquiry@novashield.shop</li>
+        <li>Address: USA</li>
+        <li>Phone: +1 844 800 2746</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-copy">
+    <p>© <span id="year"></span> NovaShield. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // small script for nav toggle and year (defensive checks)
+  const toggle = document.querySelector('.nav-toggle');
+  if (toggle){
+    toggle.addEventListener('click', function(){
+      document.querySelector('.main-nav')?.classList.toggle('mobile-open');
+    });
+  }
+  const y = document.getElementById('year');
+  if (y) y.innerText = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NovaShield — login</title>
+
+  <!-- If you prefer external file, paste the CSS below into css/styles.css and remove the <style> block -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="description" content="NovaShield — Modern antivirus & cyber-security solutions" />
+   <style>
+   
+
+    /* Top bar / header */
+    
+
+    /* Page hero */
+    .page-hero{padding:28px 20px}
+    .page-hero .container{max-width:1100px;margin:0 auto}
+    .page-hero h1{font-size:22px;font-weight:800;margin-bottom:6px}
+    .breadcrumb{color:var(--muted);font-size:14px}
+
+    /* Main container centres the auth area */
+    main.container{
+      max-width:1100px;
+      margin:18px auto 60px;
+      width:100%;
+      padding:0 20px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex:1;
+    }
+
+    .auth-wrap{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:24px;
+    }
+
+    /* Auth card */
+    .auth-card{
+      width:100%;
+      max-width:920px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.92));
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:28px;
+      align-items:center;
+      transition:transform .18s ease, box-shadow .18s ease;
+      overflow:hidden;
+    }
+    .auth-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,23,36,0.12)}
+
+    .auth-title{font-size:20px;font-weight:800;margin-bottom:8px;color:var(--accent)}
+
+    /* left column = forms */
+    .tabs{display:flex;gap:10px;margin-bottom:12px}
+    .tab-btn{
+      background:transparent;border:1px solid rgba(15,23,36,0.06);
+      padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer;color:var(--muted)
+    }
+    .tab-btn.active{background:linear-gradient(90deg,#fff,#fff);border:1px solid rgba(0,0,0,0.06);color:var(--accent);box-shadow:0 6px 20px rgba(15,23,36,0.04)}
+
+    .msg{padding:10px 12px;border-radius:10px;margin-bottom:12px;display:none;font-weight:600}
+    .msg.success{background:rgba(22,163,74,0.08);color:var(--success);border:1px solid rgba(22,163,74,0.12)}
+    .msg.error{background:rgba(239,68,68,0.06);color:var(--danger);border:1px solid rgba(239,68,68,0.08)}
+
+    form{margin-top:6px}
+    .form-row{margin-bottom:12px}
+    label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted);font-weight:600}
+    .input{
+      width:100%;padding:12px 14px;border-radius:10px;border:1px solid #e6eef6;background:linear-gradient(180deg,#fff,#fbfdff);
+      outline:none;font-size:15px;color:var(--accent);
+      transition:box-shadow .12s ease,border-color .12s ease,transform .08s ease;
+    }
+    .input:focus{box-shadow:0 6px 18px rgba(16,24,40,0.06);border-color:rgba(15,23,36,0.08);transform:translateY(-1px)}
+
+    .pw-row{position:relative}
+    .pw-toggle{
+      position:absolute;right:8px;top:34px;background:transparent;border:none;padding:6px 8px;border-radius:8px;cursor:pointer;font-weight:700;color:var(--brand)
+    }
+
+    .helper-row{display:flex;justify-content:space-between;align-items:center;margin:8px 0 12px;font-size:14px}
+    .checkbox{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--muted)}
+    .link{color:var(--brand);text-decoration:none;font-weight:700}
+    .link:hover{text-decoration:underline}
+
+    .actions-row{display:flex;gap:10px;align-items:center;margin-top:8px}
+    .btn{padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:800}
+    .btn-primary{background:linear-gradient(90deg,var(--brand),#ff8968);color:#fff;box-shadow:0 8px 24px rgba(255,107,107,0.12)}
+    .btn-ghost{background:transparent;border:1px solid rgba(15,23,36,0.06);color:var(--accent)}
+
+    /* right column = info / illustration */
+    .auth-info{
+      padding:18px;border-radius:10px;background:linear-gradient(180deg, rgba(15,23,36,0.03), rgba(15,23,36,0.02));
+      display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;
+    }
+    .auth-info h3{margin-top:6px;font-size:18px}
+    .auth-info p{color:var(--muted);font-size:14px}
+
+    .features-mini{display:flex;gap:8px;flex-direction:column;width:100%;margin-top:8px}
+    .mini{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(180deg, #fff, #fff);padding:10px;border-radius:10px;border:1px solid rgba(15,23,36,0.03)}
+    .mini svg{width:36px;height:36px;flex-shrink:0}
+    .mini h4{font-size:14px;margin-bottom:4px}
+    .mini p{color:var(--muted);font-size:13px;line-height:1.3}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .auth-card{grid-template-columns:1fr;max-width:720px;padding:22px}
+      .auth-info{order:2}
+    }
+    @media (max-width:520px){
+      .page-hero h1{font-size:18px}
+      .auth-card{padding:16px}
+      .pw-toggle{top:36px;right:10px}
+    }
+
+    /* footer simple */
+  
+  </style>
+</head>
+<body class="nav-1">
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="index.html">
+      <span class="brand-logo-bg" style="background-image:url('images/logo.png');" aria-hidden="true"></span>
+      <span class="brand-title"></span>
+    </a>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+         <li><a href="term.html">Terms & Conditions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="actions">
+  <a class="cart-icon" href="cart.html">
+    <i class="fa-solid fa-cart-shopping"></i>
+  </a>
+
+  <a class="cart-icon" href="login.html">
+    <i class="fa-regular fa-user"></i>
+  </a>
+</div>
+    <button class="nav-toggle" aria-label="Open menu">☰</button>
+
+  </div>
+</header>
+
+
+ <!-- HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Login OR Register</h1>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main class="container" role="main">
+    <div class="auth-wrap">
+
+      <!-- AUTH CARD -->
+      <div class="card auth-card" aria-live="polite" role="region" aria-label="Authentication">
+
+        <!-- LEFT: forms -->
+        <div>
+          <h2 class="auth-title">Welcome back — please login</h2>
+
+          <div class="tabs" role="tablist" aria-label="Authentication tabs">
+            <button id="tab-login" class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-login">Login</button>
+            <button id="tab-register" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-register">Register</button>
+          </div>
+
+          <div id="msg" class="msg" role="status" aria-live="polite" style="display:none"></div>
+
+          <!-- LOGIN PANEL -->
+          <div id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+            <form id="login-form" novalidate>
+              <div class="form-row">
+                <label for="login-user">Username or Email Address</label>
+                <input id="login-user" class="input" name="loginUser" type="text" autocomplete="username" placeholder="Username or Email Address" required>
+              </div>
+
+              <div class="form-row pw-row">
+                <label for="login-pass">Password</label>
+                <input id="login-pass" class="input" name="loginPass" type="password" autocomplete="current-password" placeholder="Password" required>
+                <button type="button" class="pw-toggle" id="toggle-login-pw" aria-label="Show password">Show</button>
+              </div>
+
+              <div class="helper-row">
+                <label class="checkbox"><input id="remember" type="checkbox"> Remember Me</label>
+                <a class="link" href="#" id="forgot">Forgot Password?</a>
+              </div>
+
+              <div class="actions-row">
+                <button class="btn btn-primary" type="submit">Log In</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- REGISTER PANEL -->
+          <div id="panel-register" role="tabpanel" aria-labelledby="tab-register" hidden>
+            <form id="register-form" novalidate>
+              <div class="form-row">
+                <label for="reg-username">Username</label>
+                <input id="reg-username" class="input" name="regUsername" type="text" minlength="3" placeholder="Username" required>
+              </div>
+
+              <div class="form-row">
+                <label for="reg-email">Email Address</label>
+                <input id="reg-email" class="input" name="regEmail" type="email" autocomplete="email" placeholder="Email Address" required>
+              </div>
+
+              <div class="form-row pw-row">
+                <label for="reg-pass">Password</label>
+                <input id="reg-pass" class="input" name="regPass" type="password" minlength="6" autocomplete="new-password" placeholder="Password" required>
+                <button type="button" class="pw-toggle" id="toggle-reg-pw" aria-label="Show password">Show</button>
+              </div>
+
+              <div class="form-row">
+                <label class="checkbox"><input id="accept" name="accept" type="checkbox" required> I Accept the <a href="terms.html" class="link" target="_blank">Terms and Conditions</a>.</label>
+              </div>
+
+              <div class="actions-row">
+                <button class="btn btn-primary" type="submit">Register</button>
+                <button class="btn btn-ghost" type="button" id="clear-reg">Clear</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- RIGHT: info panel -->
+        <aside class="auth-info" aria-hidden="false">
+          <svg width="84" height="84" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect width="24" height="24" rx="6" fill="#fff" />
+            <path d="M12 2v4M7 7a5 5 0 0010 0M4 13a8 8 0 0116 0v3H4v-3z" stroke="#ff6b6b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Secure &amp; Easy</h3>
+          <p>Sign in to access your purchases, licenses and support. New here? Register in seconds — we’ll keep your data safe.</p>
+
+          <div class="features-mini" aria-hidden="true">
+            <div class="mini">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2 5 5 .5-3.5 3 1 5.5L12 14l-5.5 2 1-5.5L4 7.5 9 7 12 2z" stroke="#0f1724" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <h4>Fast login</h4>
+                <p>Remember me option and quick access to your orders.</p>
+              </div>
+            </div>
+
+            <div class="mini">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 11c2.761 0 5-2.239 5-5S14.761 1 12 1 7 3.239 7 6s2.239 5 5 5zM4 23c0-4 6-7 8-7s8 3 8 7" stroke="#0f1724" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <h4>Privacy first</h4>
+                <p>We follow best practices — see our Privacy Policy for details.</p>
+              </div>
+            </div>
+          </div>
+
+          <small style="color:var(--muted)">Need help? Email <a href="contact.html" class="link">inquiry@novashield.shop</a></small>
+        </aside>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+   <footer class="site-footer">
+
+  <div class="container footer-grid">
+
+    <!-- PART 1: ABOUT -->
+    <div class="footer-col">
+      <img src="images/logo.png" alt="logo" class="footer-logo">
+
+      
+      <p>Reliable cybersecurity for everyone.</p>
+
+      <p style="margin-top:10px; line-height:1.6;">
+        Our team delivers comprehensive evaluations of various antivirus software,
+        highlighting their features, strengths, and weaknesses. These reviews are based on
+        meticulous testing and thorough assessment.
+      </p>
+    </div>
+
+    <!-- PART 2: LINKS -->
+   
+    <!-- PART 3: SOCIAL -->
+    <div class="footer-col">
+       <h5 style="margin-top:20px;">Our Policies</h5>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+        <li><a href="term.html">Terms & Conditions</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="cookies.html">Cookies Policy</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="internet-ads.html">Internet-Based Ads</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+     <div class="footer-col">
+      <div class="footer-col">
+  <h5>Contact Info</h5>
+  <ul>
+    <li>Email: inquiry@novashield.shop</li>
+    <li>Address: USA</li>
+    <li>Phone: +1 844 800 2746</li>
+    
+  </ul>
+</div>
+    </div>
+
+
+  </div>
+
+  <!-- COPYRIGHT (FULL WIDTH + BOTTOM CENTER) -->
+  <div class="footer-copy">
+    <p>© <span id="year"></span> NovaShield. All rights reserved.</p>
+  </div>
+
+</footer>
+
+  <!-- Cart header updater: switched to novashield_cart and novaShield API -->
+  <script>
+    (function(){
+      function getCart() {
+        try {
+          return JSON.parse(localStorage.getItem('novashield_cart') || '[]');
+        } catch (e) { return []; }
+      }
+      function updateCartAmount() {
+        const cart = getCart();
+        const total = cart.reduce((sum, item) => {
+          const price = Number(item.price) || 0;
+          const qty = Number(item.qty) || 0;
+          return sum + (price * qty);
+        }, 0);
+        const el = document.getElementById('cartAmount');
+        if (el) el.textContent = '$' + total.toFixed(2);
+      }
+
+      // Run on load
+      updateCartAmount();
+
+      // Also listen for storage events (when cart is changed in another tab)
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'novashield_cart') updateCartAmount();
+      });
+
+      // Provide a small helper in case other pages call it directly
+      window.novaShield = window.novaShield || {};
+      window.novaShield.updateCart = updateCartAmount;
+    })();
+  </script>
+
+  <!-- JS: tabs, toggles, validation -->
+  <script>
+    // Tabs + panels
+    const tabLogin = document.getElementById('tab-login');
+    const tabRegister = document.getElementById('tab-register');
+    const panelLogin = document.getElementById('panel-login');
+    const panelRegister = document.getElementById('panel-register');
+    const msgEl = document.getElementById('msg');
+
+    function showMsg(text, type='error'){
+      msgEl.textContent = text;
+      msgEl.className = 'msg ' + (type==='success' ? 'success' : 'error');
+      msgEl.style.display = 'block';
+      if(type === 'success') setTimeout(()=> { msgEl.style.display='none'; }, 4000);
+      // focus for accessibility
+      msgEl.setAttribute('tabindex','-1');
+      msgEl.focus({preventScroll:true});
+    }
+    function clearMsg(){ msgEl.style.display = 'none'; msgEl.textContent = ''; msgEl.className = 'msg'; }
+
+    function activateTab(tab){
+      clearMsg();
+      if(tab === 'login'){
+        tabLogin.classList.add('active'); tabLogin.setAttribute('aria-selected','true');
+        tabRegister.classList.remove('active'); tabRegister.setAttribute('aria-selected','false');
+        panelLogin.hidden = false; panelRegister.hidden = true;
+      } else {
+        tabRegister.classList.add('active'); tabRegister.setAttribute('aria-selected','true');
+        tabLogin.classList.remove('active'); tabLogin.setAttribute('aria-selected','false');
+        panelRegister.hidden = false; panelLogin.hidden = true;
+      }
+    }
+
+    tabLogin.addEventListener('click', ()=> activateTab('login'));
+    tabRegister.addEventListener('click', ()=> activateTab('register'));
+    if(location.hash === '#register') activateTab('register');
+
+    // Password show/hide
+    function setupPw(btnId, inputId){
+      const btn = document.getElementById(btnId);
+      const input = document.getElementById(inputId);
+      if(!btn || !input) return;
+      btn.addEventListener('click', () => {
+        if(input.type === 'password'){ input.type = 'text'; btn.textContent = 'Hide'; }
+        else { input.type = 'password'; btn.textContent = 'Show'; }
+        input.focus();
+      });
+    }
+    setupPw('toggle-login-pw','login-pass');
+    setupPw('toggle-reg-pw','reg-pass');
+
+    // Demo login handler
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault(); clearMsg();
+      const user = document.getElementById('login-user').value.trim();
+      const pass = document.getElementById('login-pass').value.trim();
+      if(!user || !pass){ showMsg('कृपया दोनों फील्ड भरें।'); return; }
+      // Demo success
+      showMsg('Login successful (demo). Redirecting...', 'success');
+      setTimeout(()=> {
+        // in real app you'd redirect to dashboard; here we just clear
+        document.getElementById('login-form').reset();
+      }, 900);
+    });
+
+    // Demo register handler
+    document.getElementById('register-form').addEventListener('submit', (e) => {
+      e.preventDefault(); clearMsg();
+      const username = document.getElementById('reg-username').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const pass = document.getElementById('reg-pass').value.trim();
+      const accepted = document.getElementById('accept').checked;
+      if(username.length < 3){ showMsg('Username कम से कम 3 अक्षर होना चाहिए।'); return; }
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailRe.test(email)){ showMsg('कृपया valid ईमेल डालें।'); return; }
+      if(pass.length < 6){ showMsg('Password कम से कम 6 अक्षर होना चाहिए।'); return; }
+      if(!accepted){ showMsg('कृपया Terms और Conditions स्वीकार करें।'); return; }
+
+      showMsg('Registration सफल — आप Login कर सकते हैं।', 'success');
+      setTimeout(()=> {
+        document.getElementById('register-form').reset();
+        activateTab('login');
+      }, 900);
+    });
+
+    // Clear register button
+    document.getElementById('clear-reg').addEventListener('click', ()=> {
+      document.getElementById('register-form').reset();
+      clearMsg();
+    });
+
+    // focus first input when switching to login/register
+    tabLogin.addEventListener('click', ()=> setTimeout(()=> document.getElementById('login-user').focus(), 120));
+    tabRegister.addEventListener('click', ()=> setTimeout(()=> document.getElementById('reg-username').focus(), 120));
+  </script>
+</body>
+</html>
